@@ -55,6 +55,7 @@ typedef struct {
  *
  * @param[in]  io LCD panel IO handle
  * @param[in]  panel_dev_config General panel device configuration
+ * @param[in]  rotate Whether to rotate the display initially (true for 90 degrees clockwise, false for no rotation)
  * @param[out] ret_panel Returned LCD panel handle
  * @return
  *      - ESP_ERR_INVALID_ARG   if parameter is invalid
@@ -62,7 +63,7 @@ typedef struct {
  *      - Otherwise             on fail
  */
 esp_err_t esp_lcd_new_panel_jd9365(const esp_lcd_panel_io_handle_t io, const esp_lcd_panel_dev_config_t *panel_dev_config,
-                                   esp_lcd_panel_handle_t *ret_panel);
+                                   esp_lcd_panel_handle_t *ret_panel, bool rotate);
 
 /**
  * @brief MIPI-DSI bus configuration structure
