@@ -56,7 +56,6 @@ static esp_err_t panel_jd9365_init(esp_lcd_panel_t *panel);
 static esp_err_t panel_jd9365_reset(esp_lcd_panel_t *panel);
 static esp_err_t panel_jd9365_invert_color(esp_lcd_panel_t *panel, bool invert_color_data);
 static esp_err_t panel_jd9365_mirror(esp_lcd_panel_t *panel, bool mirror_x, bool mirror_y);
-//static esp_err_t panel_jd9365_rotate(esp_lcd_panel_t *panel, bool rotate);
 static esp_err_t panel_jd9365_disp_on_off(esp_lcd_panel_t *panel, bool on_off);
 
 esp_err_t esp_lcd_new_panel_jd9365(const esp_lcd_panel_io_handle_t io, const esp_lcd_panel_dev_config_t *panel_dev_config,
@@ -524,29 +523,6 @@ static esp_err_t panel_jd9365_mirror(esp_lcd_panel_t *panel, bool mirror_x, bool
 
     return ESP_OK;
 }
-/*
-static esp_err_t panel_jd9365_rotate(esp_lcd_panel_t *panel, bool rotate)
-{
-    jd9365_panel_t *jd9365 = (jd9365_panel_t *)panel->user_data;
-    esp_lcd_panel_io_handle_t io = jd9365->io;
-    uint8_t madctl_val = jd9365->madctl_val;
-
-    ESP_RETURN_ON_FALSE(io, ESP_ERR_INVALID_STATE, TAG, "invalid panel IO");
-
-    // Control rotation through LCD command
-    if (rotate) {
-        madctl_val |= (1<<5);
-    } else {
-        madctl_val &= ~(1<<5);
-    }
-
-    ESP_RETURN_ON_ERROR(esp_lcd_panel_io_tx_param(io, LCD_CMD_MADCTL, (uint8_t []) {
-        madctl_val
-    }, 1), TAG, "send command failed");
-    jd9365->madctl_val = madctl_val;
-
-    return ESP_OK;
-}*/
 
 static esp_err_t panel_jd9365_disp_on_off(esp_lcd_panel_t *panel, bool on_off)
 {
