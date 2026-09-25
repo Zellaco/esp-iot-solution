@@ -94,11 +94,9 @@ esp_err_t esp_lcd_new_panel_jd9365(const esp_lcd_panel_io_handle_t io, const esp
         break;
     }
 
-#if CONFIG_LCD_ROTATE
     if (rotate) {
         jd9365->madctl_val |= (1<<5);
     }
-#endif
 
     switch (panel_dev_config->bits_per_pixel) {
     case 16: // RGB565
